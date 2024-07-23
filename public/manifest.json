@@ -1,0 +1,35 @@
+{
+  "name": "Cygnus Wallet",
+  "description": "Cygnus Wallet",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "icons": {},
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Cygnus Wallet",
+    "default_icon": {}
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/contentScript.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["js/injectCygnus.js"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["assets/*.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
