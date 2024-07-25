@@ -1,10 +1,20 @@
-import { defineConfig } from "vite";
+/// <reference types="vitest" />
+
+import { defineConfig, mergeConfig } from "vite";
+import { defineConfig as defineVitestConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
+
 import path from "path";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 
-// https://vitejs.dev/config/
-export default defineConfig({
+const viteTestConfig = defineVitestConfig({
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./vitest.setup.ts"],
+  },
+});
+
+const viteAppConfig = defineConfig({
   plugins: [react(), nodeResolve()],
   resolve: {
     alias: {
@@ -34,3 +44,5 @@ export default defineConfig({
     },
   },
 });
+
+export default mergeConfig(viteAppConfig, viteTestConfig);
