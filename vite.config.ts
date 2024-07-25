@@ -10,6 +10,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 const viteTestConfig = defineVitestConfig({
   test: {
     environment: "jsdom",
+    globals: true,
     setupFiles: ["./vitest.setup.ts"],
   },
 });
