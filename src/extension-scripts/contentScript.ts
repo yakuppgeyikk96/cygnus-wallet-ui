@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 function domIsReady() {
   if (
     document.readyState === "complete" ||

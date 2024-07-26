@@ -1,11 +1,11 @@
 import "./App.css";
-import Signup from "./components/blocks/Signup";
 import AppLayout from "./components/layouts/AppLayout";
+import Routes from "./routes";
 
 function App() {
   return (
     <AppLayout>
-      <Signup />
+      <Routes />
     </AppLayout>
   );
 }
